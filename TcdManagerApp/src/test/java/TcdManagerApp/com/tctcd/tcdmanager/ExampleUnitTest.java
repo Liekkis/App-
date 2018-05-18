@@ -1,4 +1,4 @@
-package app.android.com.app;
+package TcdManagerApp.com.tctcd.tcdmanager;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package app.android.com.app;
+package TcdManagerApp.com.tctcd.tcdmanager;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
