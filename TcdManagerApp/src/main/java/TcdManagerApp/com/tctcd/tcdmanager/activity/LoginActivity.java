@@ -1,4 +1,4 @@
-package TcdManagerApp.com.tctcd.tcdmanager.TcdManagerApp.com.tctcd.tcdmanager.activity;
+package TcdManagerApp.com.tctcd.tcdmanager.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
