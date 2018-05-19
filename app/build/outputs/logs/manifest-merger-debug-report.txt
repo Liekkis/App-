@@ -1,0 +1,122 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+MERGED from [com.android.support:design:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/f58b93e4e80e35f0ab6d4619e5e6ebfd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8652de3fdfd83da495098672bd0010d6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/f60a19130a9521fbaa65c5888c26aafb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/291c0f2bb2382804ba0d15ca2ac89a5a/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/89800da5d5d6cbf96f904f4501010516/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/645160f2ca6feee107b27f9087a30475/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/d9f50186ee71937f382127d76677f55b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/1c23bcc25ea0258bdf2d23c4d7bcf92b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/f6938a2feed7881e38d69cf401d4b0e6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/bf135e73fac42ce81912ba790d4c9f8d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/d33c3651ca18493d7941aec8bb237249/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/05195328651707a4bc6587202b3d52c8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/3d60629b2ed4e823b72763c285442e82/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/622d7a00cff26a45927586e1cf2849c8/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/1b1b165b14c655f41f061e0046db640b/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/43316240d2018ee96b9e498614d7a6fa/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d67d9610ad2875622602b8f2d992c5ff/AndroidManifest.xml:17:1-22:12
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+	package
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:3:5-34
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:1-24:12
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:5:5-22:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/291c0f2bb2382804ba0d15ca2ac89a5a/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/291c0f2bb2382804ba0d15ca2ac89a5a/AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:11:9-40
+activity#app.android.com.app.MainActivity
+ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:12:9-21:20
+	android:label
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:14:13-45
+	android:theme
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:15:13-56
+	android:name
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:13:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml:19:27-74
+uses-sdk
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/f58b93e4e80e35f0ab6d4619e5e6ebfd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/f58b93e4e80e35f0ab6d4619e5e6ebfd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8652de3fdfd83da495098672bd0010d6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8652de3fdfd83da495098672bd0010d6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/f60a19130a9521fbaa65c5888c26aafb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/f60a19130a9521fbaa65c5888c26aafb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/291c0f2bb2382804ba0d15ca2ac89a5a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/291c0f2bb2382804ba0d15ca2ac89a5a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/89800da5d5d6cbf96f904f4501010516/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/89800da5d5d6cbf96f904f4501010516/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/645160f2ca6feee107b27f9087a30475/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/645160f2ca6feee107b27f9087a30475/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/d9f50186ee71937f382127d76677f55b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/d9f50186ee71937f382127d76677f55b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/1c23bcc25ea0258bdf2d23c4d7bcf92b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/1c23bcc25ea0258bdf2d23c4d7bcf92b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/f6938a2feed7881e38d69cf401d4b0e6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/f6938a2feed7881e38d69cf401d4b0e6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/bf135e73fac42ce81912ba790d4c9f8d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/bf135e73fac42ce81912ba790d4c9f8d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/d33c3651ca18493d7941aec8bb237249/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/d33c3651ca18493d7941aec8bb237249/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/05195328651707a4bc6587202b3d52c8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/05195328651707a4bc6587202b3d52c8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/3d60629b2ed4e823b72763c285442e82/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /home/yangli/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/3d60629b2ed4e823b72763c285442e82/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/622d7a00cff26a45927586e1cf2849c8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/622d7a00cff26a45927586e1cf2849c8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/1b1b165b14c655f41f061e0046db640b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/1b1b165b14c655f41f061e0046db640b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/43316240d2018ee96b9e498614d7a6fa/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/43316240d2018ee96b9e498614d7a6fa/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d67d9610ad2875622602b8f2d992c5ff/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/yangli/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d67d9610ad2875622602b8f2d992c5ff/AndroidManifest.xml:20:5-44
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+		ADDED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
+		INJECTED from /data/home/yangli/Desktop/test/App开发/TcdManager/app/src/main/AndroidManifest.xml
