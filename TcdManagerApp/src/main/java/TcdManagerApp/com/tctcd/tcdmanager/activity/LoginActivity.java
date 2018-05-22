@@ -10,9 +10,10 @@ import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -61,14 +62,29 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mUserNameView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private Boolean isSuccess = false;
+    public static final int login_success = 0x00;
+    public static final int login_fail = 0x01;
+    private Handler mHandle = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case login_success:
+                    Intent intent = new Intent(getBaseContext(),MainActivity.class);
+                    startActivity(intent);
+                    break;
+                case login_fail:
+                    mUserNameView.setText("");
+                    mPasswordView.setText("");
+                    break;
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //数据库初始化
@@ -154,10 +170,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
-
         // Reset errors.
         mUserNameView.setError(null);
         mPasswordView.setError(null);
@@ -191,15 +203,41 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(username, password);
-            mAuthTask.execute((Void) null);
+            login();
         }
     }
 
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
+    private void login() {
+        //从数据获取账号密码进行比对
+        BmobQuery<UserEntity> query = new BmobQuery<UserEntity>("UserEntity");
+        query.addWhereEqualTo("userName", mUserNameView.getText().toString());
+        query.addWhereEqualTo("password", mPasswordView.getText().toString());
+        query.findObjects(new FindListener<UserEntity>() {
+
+            @Override
+            public void done(List<UserEntity> list, BmobException e) {
+                if (e == null) {
+                    if (list.size() > 0) {
+                        BmobTools.userEntity = list.get(0);
+                        sendMsg(login_success);
+                    } else {
+                        sendMsg(login_fail);
+                        Toast.makeText(getBaseContext(), "用户名或密码错误，请重新登录" + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    sendMsg(login_fail);
+                    Toast.makeText(getBaseContext(), "网络错误" + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
+
+    private void sendMsg(int i) {
+        Message message = new Message();
+        message.what = i;
+        mHandle.sendMessage(message);
+    }
+
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
@@ -294,73 +332,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
-    }
-
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mUsername;
-        private final String mPassword;
-
-        UserLoginTask(String username, String password) {
-            mUsername = username;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            //从数据获取账号密码进行比对
-            BmobQuery<UserEntity> query = new BmobQuery<UserEntity>("UserEntity");
-            query.addWhereEqualTo("userName", mUsername);
-            query.addWhereEqualTo("password", mPassword);
-            query.findObjects(new FindListener<UserEntity>() {
-
-                @Override
-                public void done(List<UserEntity> list, BmobException e) {
-                    if (e == null) {
-                        if (list.size() > 0) {
-                            BmobTools.userEntity = list.get(0);
-                            isSuccess = true;
-                        }else{
-                            isSuccess = false;
-                            e.printStackTrace();
-                            Toast.makeText(getBaseContext(),"用户名或密码错误，请重新登录"+e.getMessage(),Toast.LENGTH_LONG).show();
-                        }
-                    } else {
-                        e.printStackTrace();
-                        isSuccess = false;
-                        Toast.makeText(getBaseContext(),"网络错误"+e.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-            return isSuccess;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
-
-            if (success) {
-                Toast.makeText(getBaseContext(),"登录成功",Toast.LENGTH_LONG).show();
-                Intent intent1 = new Intent(getBaseContext(),MainActivity.class);
-                startActivity(intent1);
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
-        }
     }
 }
 
