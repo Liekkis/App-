@@ -117,22 +117,27 @@ public class MainActivity extends AppCompatActivity
         switch (id) {
             case R.id.all_action:
                 Toast.makeText(this, "app1", Toast.LENGTH_LONG).show();
+                mlistfragment.queryPayAsGroup("Group","APP");
                 mlistfragment.queryAsGroup("Group","");
                 break;
             case R.id.app1_action:
                 Toast.makeText(this, "app1", Toast.LENGTH_LONG).show();
+                mlistfragment.queryPayAsGroup("Group","APP1");
                 mlistfragment.queryAsGroup("Group","APP1");
                 break;
             case R.id.app2_action:
                 Toast.makeText(this, "app2", Toast.LENGTH_LONG).show();
+                mlistfragment.queryPayAsGroup("Group","APP2");
                 mlistfragment.queryAsGroup("Group","APP2");
                 break;
             case R.id.app3_action:
                 Toast.makeText(this, "app3", Toast.LENGTH_LONG).show();
+                mlistfragment.queryPayAsGroup("Group","APP3");
                 mlistfragment.queryAsGroup("Group","APP3");
                 break;
             case R.id.app4_action:
                 Toast.makeText(this, "app4", Toast.LENGTH_LONG).show();
+                mlistfragment.queryPayAsGroup("Group","APP4");
                 mlistfragment.queryAsGroup("Group","APP4");
                 break;
         }

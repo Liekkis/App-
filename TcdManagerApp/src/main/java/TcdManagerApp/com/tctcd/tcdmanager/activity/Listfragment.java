@@ -18,6 +18,7 @@ import java.util.List;
 
 import TcdManagerApp.com.tctcd.tcdmanager.R;
 import TcdManagerApp.com.tctcd.tcdmanager.adapter.RecyclerViewAdapter;
+import TcdManagerApp.com.tctcd.tcdmanager.entity.Pay;
 import TcdManagerApp.com.tctcd.tcdmanager.entity.Subsidies;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -26,10 +27,16 @@ import cn.bmob.v3.listener.FindListener;
 public class Listfragment extends Fragment {
 
     public static final int QUERY_SUCCESS = 0X00;
+    public static final int QUERY_PAY_SUCCESS = 0X05;
     private RecyclerView recyclerView;
     private TextView loadingText;
     private RecyclerViewAdapter recyclerViewAdapter;
+    private TextView teamText;
+    private TextView spayText;
+    private TextView payText;
+    private TextView unPay;
     private List<Subsidies> mList = new ArrayList<>();
+    private Pay mpay;
     private Handler mhandle = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -39,6 +46,12 @@ public class Listfragment extends Fragment {
                     loadingText.setVisibility(View.GONE);
                     recyclerViewAdapter.notifyDataSetChanged();
                     break;
+                case QUERY_PAY_SUCCESS:
+                    teamText.setText("Team:"+mpay.getGroup()+"("+mpay.getPeopleCount()+"人)");
+                    spayText.setText("应缴:");
+                    payText.setText("实缴:");
+                    unPay.setText("未缴：");
+                    break;
             }
         }
     };
@@ -46,20 +59,30 @@ public class Listfragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_fragment, container,false);
+        View view = inflater.inflate(R.layout.list_fragment, container, false);
         loadingText = view.findViewById(R.id.loading);
         recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerViewAdapter = new RecyclerViewAdapter(getContext(),mList);
+        teamText = view.findViewById(R.id.team_detail);
+        teamText.setText("Team:");
+        spayText = view.findViewById(R.id.should_pay);
+        spayText.setText("应缴:");
+        payText = view.findViewById(R.id.paid);
+        payText.setText("实缴：");
+        unPay = view.findViewById(R.id.unpaid);
+        unPay.setText("未缴：");
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext(), mList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
-        queryAsGroup("Group","");
+        //默认显示总的app
+        queryAsGroup("Group", "");
+        queryPayAsGroup("Group", "APP");
         return view;
     }
 
-    public void queryAsGroup(String Key,String Value) {
+    public void queryAsGroup(String Key, final String Value) {
         BmobQuery<Subsidies> query = new BmobQuery<Subsidies>("Subsidies");
-        if(!Value.equals("")){
-            query.addWhereEqualTo(Key,Value);
+        if (!Value.equals("")) {
+            query.addWhereEqualTo(Key, Value);
         }
         query.findObjects(new FindListener<Subsidies>() {
             @Override
@@ -77,4 +100,22 @@ public class Listfragment extends Fragment {
         });
     }
 
+    public void queryPayAsGroup(String Key, final String Value) {
+        BmobQuery<Pay> query = new BmobQuery<Pay>("Pay");
+        query.addWhereEqualTo(Key, Value);
+        query.findObjects(new FindListener<Pay>() {
+            @Override
+            public void done(List<Pay> list, BmobException e) {
+                if (e == null) {
+                    mpay = list.get(0);
+                    Message message = new Message();
+                    message.what = QUERY_PAY_SUCCESS;
+                    mhandle.sendMessage(message);
+                    //Toast.makeText(getContext(), "查询数据成功"+list.size(), Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), "查询数据失败" + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
 }
