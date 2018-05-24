@@ -12,6 +12,7 @@ import java.util.List;
 
 import TcdManagerApp.com.tctcd.tcdmanager.R;
 import TcdManagerApp.com.tctcd.tcdmanager.entity.Subsidies;
+import TcdManagerApp.com.tctcd.tcdmanager.tools.BmobTools;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements View.OnClickListener {
     private Context mContext;
@@ -37,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         //登录用户默认高亮
-        if("李洋".equals(mList.get(position).getName())){
+        if(BmobTools.userEntity.getName().equals(mList.get(position).getName())){
             holder.itemView.setBackground(mContext.getDrawable(R.drawable.list_item_bg_highlight));
         } else {
             //viewhold会重用，所以需要设置回去

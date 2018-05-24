@@ -52,12 +52,15 @@ public class Listfragment extends Fragment {
         recyclerViewAdapter = new RecyclerViewAdapter(getContext(),mList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
-        query();
+        queryAsGroup("Group","");
         return view;
     }
 
-    private void query() {
+    public void queryAsGroup(String Key,String Value) {
         BmobQuery<Subsidies> query = new BmobQuery<Subsidies>("Subsidies");
+        if(!Value.equals("")){
+            query.addWhereEqualTo(Key,Value);
+        }
         query.findObjects(new FindListener<Subsidies>() {
             @Override
             public void done(List<Subsidies> list, BmobException e) {
@@ -72,7 +75,6 @@ public class Listfragment extends Fragment {
                 }
             }
         });
-
     }
 
 }

@@ -12,6 +12,15 @@ public class Subsidies extends BmobObject{
     private String parking;
     private String taxiMoney;
     private String month;
+    private String Group;
+
+    public String getGroup() {
+        return Group;
+    }
+
+    public void setGroup(String group) {
+        Group = group;
+    }
 
     public void setName(String name) {
         this.name = name;

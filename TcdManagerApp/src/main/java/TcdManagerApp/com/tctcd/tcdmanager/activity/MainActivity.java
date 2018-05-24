@@ -58,9 +58,13 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //默认选中餐补查询
-        navigationView.setCheckedItem(R.id.nav_camera);
+        navigationView.setCheckedItem(R.id.meal_search);
         if (navigationView.getMenu().getItem(0).isChecked()){
             setFragment(mlistfragment);
+        }
+        //如果是leader权限，则显示此餐补发票提交菜单
+        if (BmobTools.userEntity.getPermission().equals("leader")){
+            navigationView.getMenu().getItem(1).setVisible(true);
         }
 
 
@@ -69,8 +73,8 @@ public class MainActivity extends AppCompatActivity
         View headerview = navigationView.inflateHeaderView(R.layout.nav_header_main);
         username = headerview.findViewById(R.id.username);
         detail = headerview.findViewById(R.id.details);
-        username.setText(BmobTools.userEntity.getUserName());
-        detail.setText(BmobTools.userEntity.getUserName());
+        username.setText(BmobTools.userEntity.getName());
+        detail.setText(BmobTools.userEntity.getTeam()+"-"+BmobTools.userEntity.getGroup());
     }
 
     public void setFragment(Listfragment fragment) {
@@ -111,8 +115,25 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.action_settings:
-                Toast.makeText(this, "这是Settings", Toast.LENGTH_LONG).show();
+            case R.id.all_action:
+                Toast.makeText(this, "app1", Toast.LENGTH_LONG).show();
+                mlistfragment.queryAsGroup("Group","");
+                break;
+            case R.id.app1_action:
+                Toast.makeText(this, "app1", Toast.LENGTH_LONG).show();
+                mlistfragment.queryAsGroup("Group","APP1");
+                break;
+            case R.id.app2_action:
+                Toast.makeText(this, "app2", Toast.LENGTH_LONG).show();
+                mlistfragment.queryAsGroup("Group","APP2");
+                break;
+            case R.id.app3_action:
+                Toast.makeText(this, "app3", Toast.LENGTH_LONG).show();
+                mlistfragment.queryAsGroup("Group","APP3");
+                break;
+            case R.id.app4_action:
+                Toast.makeText(this, "app4", Toast.LENGTH_LONG).show();
+                mlistfragment.queryAsGroup("Group","APP4");
                 break;
         }
 
@@ -127,11 +148,11 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id) {
-            case R.id.nav_camera:
-
+            case R.id.meal_search:
+                setFragment(mlistfragment);
                 break;
-//            case R.id.nav_gallery:
-//                break;
+            case R.id.meal_commit:
+                break;
 //            case R.id.nav_slideshow:
 //                break;
 //            case R.id.nav_manage:
