@@ -22,6 +22,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.mContext = context;
     }
 
+    public void setList(List<Subsidies> mList) {
+        this.mList = mList;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,6 +36,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        //登录用户默认高亮
+        if("李洋".equals(mList.get(position).getName())){
+            holder.itemView.setBackground(mContext.getDrawable(R.drawable.list_item_bg_highlight));
+        } else {
+            //viewhold会重用，所以需要设置回去
+            holder.itemView.setBackground(mContext.getDrawable(R.drawable.list_item_bg));
+        }
         holder.nameText.setText(mList.get(position).getName());
         holder.monthText.setText(mList.get(position).getMonth());
         holder.moneyText.setText(mList.get(position).getMoney());

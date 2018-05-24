@@ -1,5 +1,7 @@
 package TcdManagerApp.com.tctcd.tcdmanager.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView username;
     private TextView detail;
+    private Listfragment mlistfragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +51,35 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        //初始化fragment
+        mlistfragment = new Listfragment();
 
         //为侧滑出来的布局的item注册监听器
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //默认选中餐补查询
+        navigationView.setCheckedItem(R.id.nav_camera);
+        if (navigationView.getMenu().getItem(0).isChecked()){
+            setFragment(mlistfragment);
+        }
+
+
+
         //为侧滑出来的navigationview的上面的个人信息设置登陆用户text
         View headerview = navigationView.inflateHeaderView(R.layout.nav_header_main);
         username = headerview.findViewById(R.id.username);
         detail = headerview.findViewById(R.id.details);
         username.setText(BmobTools.userEntity.getUserName());
         detail.setText(BmobTools.userEntity.getUserName());
+    }
+
+    public void setFragment(Listfragment fragment) {
+        if(!fragment.isVisible()){
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout, fragment);
+            fragmentTransaction.commit();
+        }
     }
 
     //点击返回按钮的事件
@@ -106,21 +128,24 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         switch (id) {
             case R.id.nav_camera:
+
                 break;
-            case R.id.nav_gallery:
-                break;
-            case R.id.nav_slideshow:
-                break;
-            case R.id.nav_manage:
-                break;
-            case R.id.nav_share:
-                break;
-            case R.id.nav_send:
-                break;
+//            case R.id.nav_gallery:
+//                break;
+//            case R.id.nav_slideshow:
+//                break;
+//            case R.id.nav_manage:
+//                break;
+//            case R.id.nav_share:
+//                break;
+//            case R.id.nav_send:
+//                break;
         }
         //点击了某一个菜单之后关闭DrawerLayout
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
