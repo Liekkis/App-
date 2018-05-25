@@ -13,6 +13,15 @@ public class Subsidies extends BmobObject{
     private String taxiMoney;
     private String month;
     private String Group;
+    private String dinnerCount;
+
+    public void setDinnerCount(String dinnerCount) {
+        this.dinnerCount = dinnerCount;
+    }
+
+    public String getDinnerCount() {
+        return dinnerCount;
+    }
 
     public String getGroup() {
         return Group;

@@ -7,6 +7,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +38,25 @@ public class Listfragment extends Fragment {
     private TextView unPay;
     private List<Subsidies> mList = new ArrayList<>();
     private Pay mpay;
-
+    private int openTag = -1;
     private View.OnLongClickListener mlongClickListen = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {
-            Toast.makeText(getContext(),"这是"+mList.get(Integer.valueOf(v.getTag().toString())).getName(),Toast.LENGTH_LONG).show();
+            Log.d("yanglia","tag:"+v.getTag());
+            Log.d("yanglia","openTag:"+openTag);
+            if (openTag != -1) {
+                recyclerView.getLayoutManager().findViewByPosition(openTag).findViewById(R.id.subsidies_details).setVisibility(View.GONE);
+                if (Integer.valueOf(v.getTag().toString()) != openTag) {
+                    v.findViewById(R.id.subsidies_details).setVisibility(View.VISIBLE);
+                    openTag = Integer.valueOf(v.getTag().toString());
+                } else {
+                    openTag = -1;
+                }
+
+            } else {
+                v.findViewById(R.id.subsidies_details).setVisibility(View.VISIBLE);
+                openTag = Integer.valueOf(v.getTag().toString());
+            }
             return true;
         }
     };
@@ -55,7 +70,7 @@ public class Listfragment extends Fragment {
                     recyclerViewAdapter.notifyDataSetChanged();
                     break;
                 case QUERY_PAY_SUCCESS:
-                    teamText.setText("Team:"+mpay.getGroup()+"("+mpay.getPeopleCount()+"人)");
+                    teamText.setText("Team:" + mpay.getGroup() + "(" + mpay.getPeopleCount() + "人)");
                     spayText.setText("应缴:");
                     payText.setText("实缴:");
                     unPay.setText("未缴：");
@@ -78,12 +93,13 @@ public class Listfragment extends Fragment {
         payText.setText("实缴：");
         unPay = view.findViewById(R.id.unpaid);
         unPay.setText("未缴：");
-        recyclerViewAdapter = new RecyclerViewAdapter(getContext(), mList,mlongClickListen);
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext(), mList, mlongClickListen);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
         //默认显示总的app
         queryAsGroup("Group", "");
         queryPayAsGroup("Group", "APP");
+        openTag = -1;
         return view;
     }
 
