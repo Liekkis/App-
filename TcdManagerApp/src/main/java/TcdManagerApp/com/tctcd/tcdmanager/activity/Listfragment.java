@@ -37,6 +37,14 @@ public class Listfragment extends Fragment {
     private TextView unPay;
     private List<Subsidies> mList = new ArrayList<>();
     private Pay mpay;
+
+    private View.OnLongClickListener mlongClickListen = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            Toast.makeText(getContext(),"这是"+mList.get(Integer.valueOf(v.getTag().toString())).getName(),Toast.LENGTH_LONG).show();
+            return true;
+        }
+    };
     private Handler mhandle = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -70,7 +78,7 @@ public class Listfragment extends Fragment {
         payText.setText("实缴：");
         unPay = view.findViewById(R.id.unpaid);
         unPay.setText("未缴：");
-        recyclerViewAdapter = new RecyclerViewAdapter(getContext(), mList);
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext(), mList,mlongClickListen);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
         //默认显示总的app

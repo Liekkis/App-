@@ -4,16 +4,24 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/meal_search"
-            android:checked="true"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="餐补查询" />
-        <item
-            android:id="@+id/meal_commit"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="餐补发票提交"
-            android:visible="false" />
+        <item android:title="餐补">
+            <menu>
+                <item
+                    android:id="@+id/meal_search"
+                    android:checked="true"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="餐补查询" />
+                <item
+                    android:id="@+id/meal_commit"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="发票提交"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/invoice_format"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="发票格式" />
+            </menu>
+        </item>
     </group>
     <!--
     <item

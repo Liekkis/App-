@@ -59,12 +59,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         //默认选中餐补查询
         navigationView.setCheckedItem(R.id.meal_search);
-        if (navigationView.getMenu().getItem(0).isChecked()){
+        if (navigationView.getMenu().getItem(0).getSubMenu().getItem(0).isChecked()){
             setFragment(mlistfragment);
         }
         //如果是leader权限，则显示此餐补发票提交菜单
         if (BmobTools.userEntity.getPermission().equals("leader")){
-            navigationView.getMenu().getItem(1).setVisible(true);
+            navigationView.getMenu().getItem(0).getSubMenu().getItem(1).setVisible(true);
         }
 
 
