@@ -39,9 +39,9 @@ public class Listfragment extends Fragment {
     private List<Subsidies> mList = new ArrayList<>();
     private Pay mpay;
     private int openTag = -1;
-    private View.OnLongClickListener mlongClickListen = new View.OnLongClickListener() {
+    private View.OnClickListener mClickListen = new View.OnClickListener() {
         @Override
-        public boolean onLongClick(View v) {
+        public void onClick(View v) {
             Log.d("yanglia","tag:"+v.getTag());
             Log.d("yanglia","openTag:"+openTag);
             if (openTag != -1) {
@@ -57,8 +57,8 @@ public class Listfragment extends Fragment {
                 v.findViewById(R.id.subsidies_details).setVisibility(View.VISIBLE);
                 openTag = Integer.valueOf(v.getTag().toString());
             }
-            return true;
         }
+
     };
     private Handler mhandle = new Handler() {
         @Override
@@ -93,7 +93,7 @@ public class Listfragment extends Fragment {
         payText.setText("实缴：");
         unPay = view.findViewById(R.id.unpaid);
         unPay.setText("未缴：");
-        recyclerViewAdapter = new RecyclerViewAdapter(getContext(), mList, mlongClickListen);
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext(), mList, mClickListen);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewAdapter);
         //默认显示总的app

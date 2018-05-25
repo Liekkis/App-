@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,11 +19,11 @@ import TcdManagerApp.com.tctcd.tcdmanager.tools.BmobTools;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>{
     private Context mContext;
     private List<Subsidies> mList;
-    private View.OnLongClickListener mlongClickListen;
-    public RecyclerViewAdapter(Context context, List<Subsidies> list,View.OnLongClickListener longClickListen) {
+    private View.OnClickListener mClickListen;
+    public RecyclerViewAdapter(Context context, List<Subsidies> list,View.OnClickListener clickListen) {
         this.mList = list;
         this.mContext = context;
-        this.mlongClickListen = longClickListen;
+        this.mClickListen = clickListen;
     }
 
     public void setList(List<Subsidies> mList) {
@@ -33,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
-        return new MyViewHolder(view,mlongClickListen);
+        return new MyViewHolder(view,mClickListen);
     }
 
     @Override
@@ -50,6 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.nameText.setText(mList.get(position).getName());
         holder.monthText.setText(mList.get(position).getMonth());
         holder.moneyText.setText(mList.get(position).getMoney());
+        holder.subsidiesDetails.setVisibility(View.GONE);
         holder.dinnercount.setText("加班到7:30后次数："+mList.get(position).getDinnerCount()+"次");
         holder.weekendcount.setText("周末加班次数："+mList.get(position).getWeekendCount()+"次");
         holder.packing.setText("停车费："+mList.get(position).getParking()+"元");
@@ -67,17 +69,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView nameText;
         private TextView monthText;
         private TextView moneyText;
+        private LinearLayout subsidiesDetails;
         private TextView dinnercount;
         private TextView weekendcount;
         private TextView packing;
         private TextView taxi;
-        public MyViewHolder(View itemView,View.OnLongClickListener listen) {
+        public MyViewHolder(View itemView,View.OnClickListener listen) {
             super(itemView);
             this.itemView = itemView;
-            itemView.setOnLongClickListener(listen);
+            itemView.setOnClickListener(listen);
             this.nameText = itemView.findViewById(R.id.name);
             this.monthText = itemView.findViewById(R.id.month);
             this.moneyText = itemView.findViewById(R.id.money);
+            this.subsidiesDetails = itemView.findViewById(R.id.subsidies_details);
             this.dinnercount = itemView.findViewById(R.id.dinner_count);
             this.weekendcount = itemView.findViewById(R.id.weekend_count);
             this.packing = itemView.findViewById(R.id.packing);
