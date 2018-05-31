@@ -21,14 +21,13 @@ import TcdManagerApp.com.tctcd.tcdmanager.R;
 import TcdManagerApp.com.tctcd.tcdmanager.adapter.RecyclerViewAdapter;
 import TcdManagerApp.com.tctcd.tcdmanager.entity.Pay;
 import TcdManagerApp.com.tctcd.tcdmanager.entity.Subsidies;
+import TcdManagerApp.com.tctcd.tcdmanager.tools.BmobTools;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
 public class ListFragment extends Fragment {
 
-    public static final int QUERY_SUCCESS = 0X00;
-    public static final int QUERY_PAY_SUCCESS = 0X05;
     private RecyclerView recyclerView;
     private TextView loadingText;
     private RecyclerViewAdapter recyclerViewAdapter;
@@ -64,16 +63,16 @@ public class ListFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case QUERY_SUCCESS:
+                case BmobTools.QUERY_SUCCESS:
                     recyclerViewAdapter.setList(mList);
                     loadingText.setVisibility(View.GONE);
                     recyclerViewAdapter.notifyDataSetChanged();
                     break;
-                case QUERY_PAY_SUCCESS:
+                case BmobTools.QUERY_PAY_SUCCESS:
                     teamText.setText("Team:" + mpay.getGroup() + "(" + mpay.getPeopleCount() + "人)");
                     spayText.setText("应缴:"+mpay.getSpay());
-                    payText.setText("实缴:");
-                    unPay.setText("未缴：");
+                    payText.setText("实缴:"+mpay.getPaid());
+                    unPay.setText("未缴："+mpay.getUnpaid());
                     break;
             }
         }
@@ -114,7 +113,7 @@ public class ListFragment extends Fragment {
                 if (e == null) {
                     mList = list;
                     Message message = new Message();
-                    message.what = QUERY_SUCCESS;
+                    message.what = BmobTools.QUERY_SUCCESS;
                     mhandle.sendMessage(message);
                     //Toast.makeText(getContext(), "查询数据成功"+list.size(), Toast.LENGTH_LONG).show();
                 } else {
@@ -133,7 +132,7 @@ public class ListFragment extends Fragment {
                 if (e == null) {
                     mpay = list.get(0);
                     Message message = new Message();
-                    message.what = QUERY_PAY_SUCCESS;
+                    message.what = BmobTools.QUERY_PAY_SUCCESS;
                     mhandle.sendMessage(message);
                     //Toast.makeText(getContext(), "查询数据成功"+list.size(), Toast.LENGTH_LONG).show();
                 } else {

@@ -68,17 +68,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    public static final int login_success = 0x00;
-    public static final int login_fail = 0x01;
     private Handler mHandle = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
-                case login_success:
+                case BmobTools.login_success:
                     Intent intent = new Intent(getBaseContext(),MainActivity.class);
                     startActivity(intent);
                     break;
-                case login_fail:
+                case BmobTools.login_fail:
                     mUserNameView.setText("");
                     mPasswordView.setText("");
                     break;
@@ -219,13 +217,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (e == null) {
                     if (list.size() > 0) {
                         BmobTools.userEntity = list.get(0);
-                        sendMsg(login_success);
+                        sendMsg(BmobTools.login_success);
                     } else {
-                        sendMsg(login_fail);
+                        sendMsg(BmobTools.login_fail);
                         Toast.makeText(getBaseContext(), "用户名或密码错误，请重新登录" + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    sendMsg(login_fail);
+                    sendMsg(BmobTools.login_fail);
                     Toast.makeText(getBaseContext(), "网络错误" + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
