@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     private TextView username;
     private TextView detail;
     private Listfragment mlistfragment;
+    private InvoiceFormatFragment invoiceFormatFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         //初始化fragment
         mlistfragment = new Listfragment();
+        invoiceFormatFragment = new InvoiceFormatFragment();
 
         //为侧滑出来的布局的item注册监听器
         navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -78,6 +80,15 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void setFragment(Listfragment fragment) {
+        if(!fragment.isVisible()){
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout, fragment);
+            fragmentTransaction.commit();
+        }
+    }
+
+    public void setFragment(InvoiceFormatFragment fragment) {
         if(!fragment.isVisible()){
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -153,6 +164,9 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id) {
+            case R.id.invoice_format:
+                setFragment(invoiceFormatFragment);
+                break;
             case R.id.meal_search:
                 setFragment(mlistfragment);
                 break;
