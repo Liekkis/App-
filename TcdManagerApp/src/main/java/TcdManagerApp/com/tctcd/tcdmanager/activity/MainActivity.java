@@ -1,5 +1,6 @@
 package TcdManagerApp.com.tctcd.tcdmanager.activity;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -26,8 +27,9 @@ public class MainActivity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView username;
     private TextView detail;
-    private Listfragment mlistfragment;
+    private ListFragment mlistFragment;
     private InvoiceFormatFragment invoiceFormatFragment;
+    private MealCommitFragment mealCommitFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +55,16 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         //初始化fragment
-        mlistfragment = new Listfragment();
+        mlistFragment = new ListFragment();
         invoiceFormatFragment = new InvoiceFormatFragment();
-
+        mealCommitFragment = new MealCommitFragment();
         //为侧滑出来的布局的item注册监听器
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //默认选中餐补查询
         navigationView.setCheckedItem(R.id.meal_search);
         if (navigationView.getMenu().getItem(0).getSubMenu().getItem(0).isChecked()){
-            setFragment(mlistfragment);
+            setFragment(mlistFragment);
         }
         //如果是leader权限，则显示此餐补发票提交菜单
         if (BmobTools.userEntity.getPermission().equals("leader")){
@@ -79,16 +81,7 @@ public class MainActivity extends AppCompatActivity
         detail.setText(BmobTools.userEntity.getTeam()+"-"+BmobTools.userEntity.getGroup());
     }
 
-    public void setFragment(Listfragment fragment) {
-        if(!fragment.isVisible()){
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frame_layout, fragment);
-            fragmentTransaction.commit();
-        }
-    }
-
-    public void setFragment(InvoiceFormatFragment fragment) {
+    public void setFragment(Fragment fragment) {
         if(!fragment.isVisible()){
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -128,28 +121,28 @@ public class MainActivity extends AppCompatActivity
         switch (id) {
             case R.id.all_action:
                 Toast.makeText(this, "app1", Toast.LENGTH_LONG).show();
-                mlistfragment.queryPayAsGroup("Group","APP");
-                mlistfragment.queryAsGroup("Group","");
+                mlistFragment.queryPayAsGroup("Group","APP");
+                mlistFragment.queryAsGroup("Group","");
                 break;
             case R.id.app1_action:
                 Toast.makeText(this, "app1", Toast.LENGTH_LONG).show();
-                mlistfragment.queryPayAsGroup("Group","APP1");
-                mlistfragment.queryAsGroup("Group","APP1");
+                mlistFragment.queryPayAsGroup("Group","APP1");
+                mlistFragment.queryAsGroup("Group","APP1");
                 break;
             case R.id.app2_action:
                 Toast.makeText(this, "app2", Toast.LENGTH_LONG).show();
-                mlistfragment.queryPayAsGroup("Group","APP2");
-                mlistfragment.queryAsGroup("Group","APP2");
+                mlistFragment.queryPayAsGroup("Group","APP2");
+                mlistFragment.queryAsGroup("Group","APP2");
                 break;
             case R.id.app3_action:
                 Toast.makeText(this, "app3", Toast.LENGTH_LONG).show();
-                mlistfragment.queryPayAsGroup("Group","APP3");
-                mlistfragment.queryAsGroup("Group","APP3");
+                mlistFragment.queryPayAsGroup("Group","APP3");
+                mlistFragment.queryAsGroup("Group","APP3");
                 break;
             case R.id.app4_action:
                 Toast.makeText(this, "app4", Toast.LENGTH_LONG).show();
-                mlistfragment.queryPayAsGroup("Group","APP4");
-                mlistfragment.queryAsGroup("Group","APP4");
+                mlistFragment.queryPayAsGroup("Group","APP4");
+                mlistFragment.queryAsGroup("Group","APP4");
                 break;
         }
 
@@ -168,9 +161,10 @@ public class MainActivity extends AppCompatActivity
                 setFragment(invoiceFormatFragment);
                 break;
             case R.id.meal_search:
-                setFragment(mlistfragment);
+                setFragment(mlistFragment);
                 break;
             case R.id.meal_commit:
+                setFragment(mealCommitFragment);
                 break;
 //            case R.id.nav_slideshow:
 //                break;

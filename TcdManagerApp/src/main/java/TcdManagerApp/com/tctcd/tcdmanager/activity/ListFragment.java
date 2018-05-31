@@ -25,7 +25,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
-public class Listfragment extends Fragment {
+public class ListFragment extends Fragment {
 
     public static final int QUERY_SUCCESS = 0X00;
     public static final int QUERY_PAY_SUCCESS = 0X05;
@@ -71,7 +71,7 @@ public class Listfragment extends Fragment {
                     break;
                 case QUERY_PAY_SUCCESS:
                     teamText.setText("Team:" + mpay.getGroup() + "(" + mpay.getPeopleCount() + "人)");
-                    spayText.setText("应缴:");
+                    spayText.setText("应缴:"+mpay.getSpay());
                     payText.setText("实缴:");
                     unPay.setText("未缴：");
                     break;
