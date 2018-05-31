@@ -4,7 +4,7 @@ import cn.bmob.v3.BmobObject;
 
 public class Pay extends BmobObject {
     private String Spay;
-    private String paid;
+    private String Paid;
     private String Group;
     private String Unpaid;
     private String peopleCount;
@@ -22,7 +22,7 @@ public class Pay extends BmobObject {
     }
 
     public void setPaid(String paid) {
-        this.paid = paid;
+        Paid = paid;
     }
 
     public void setGroup(String group) {
@@ -38,7 +38,7 @@ public class Pay extends BmobObject {
     }
 
     public String getPaid() {
-        return paid;
+        return Paid;
     }
 
     public String getGroup() {

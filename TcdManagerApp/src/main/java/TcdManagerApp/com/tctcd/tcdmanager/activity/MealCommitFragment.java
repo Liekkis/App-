@@ -72,13 +72,17 @@ public class MealCommitFragment extends Fragment {
     }
 
     private void updatePay() {
-        Pay pay = new Pay();
-        pay.setPaid(Integer.toString((mPay.getPaid() == null?0:Integer.valueOf(mPay.getPaid())) + Integer.valueOf(payEdit.getText().toString())));
+        final Pay pay = new Pay();
+        Log.d("yangli",Integer.toString((mPay.getPaid() == null?0:Integer.valueOf(mPay.getPaid())) + Integer.valueOf(payEdit.getText().toString())));
+        pay.setPaid(Integer.toString(
+                (mPay.getPaid() == null?0:Integer.valueOf(mPay.getPaid()))
+                        + Integer.valueOf(payEdit.getText().toString())));
         pay.setUnpaid(Integer.toString(Integer.valueOf(mPay.getUnpaid()) - Integer.valueOf(payEdit.getText().toString())));
         pay.update(mPay.getObjectId(), new UpdateListener() {
             @Override
             public void done(BmobException e) {
                 if (e == null) {
+                    Log.d("yangli",pay.getUpdatedAt()) ;
                     Message message = new Message();
                     message.what = BmobTools.UPDATE_PAY_SUCCESS;
                     mHandle.sendMessage(message);
@@ -98,6 +102,7 @@ public class MealCommitFragment extends Fragment {
             public void done(List<Pay> list, BmobException e) {
                 if (e == null) {
                     mPay = list.get(0);
+                    Log.d("yangli",list.get(0).getPaid()) ;
                     Message message = new Message();
                     message.what = BmobTools.QUERY_SUCCESS;
                     mHandle.sendMessage(message);
